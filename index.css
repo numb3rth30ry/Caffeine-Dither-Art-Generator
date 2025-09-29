@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.625rem;
+        --background: 0.98 0.02 264;
+        --foreground: 0.15 0.02 264;
+        --card: 1 0 0;
+        --card-foreground: 0.15 0.02 264;
+        --popover: 1 0 0;
+        --popover-foreground: 0.15 0.02 264;
+        --primary: 0.45 0.15 264;
+        --primary-foreground: 0.98 0.02 264;
+        --secondary: 0.94 0.02 264;
+        --secondary-foreground: 0.15 0.02 264;
+        --muted: 0.94 0.02 264;
+        --muted-foreground: 0.55 0.02 264;
+        --accent: 0.92 0.03 264;
+        --accent-foreground: 0.15 0.02 264;
+        --destructive: 0.65 0.25 15;
+        --destructive-foreground: 0.98 0.02 264;
+        --border: 0.88 0.02 264;
+        --input: 0.88 0.02 264;
+        --ring: 0.45 0.15 264;
+        --chart-1: 0.55 0.18 264;
+        --chart-2: 0.65 0.15 180;
+        --chart-3: 0.75 0.12 120;
+        --chart-4: 0.85 0.08 60;
+        --chart-5: 0.95 0.05 30;
+        --sidebar: 0.98 0.02 264;
+        --sidebar-foreground: 0.15 0.02 264;
+        --sidebar-primary: 0.45 0.15 264;
+        --sidebar-primary-foreground: 0.98 0.02 264;
+        --sidebar-accent: 0.94 0.02 264;
+        --sidebar-accent-foreground: 0.15 0.02 264;
+        --sidebar-border: 0.88 0.02 264;
+        --sidebar-ring: 0.45 0.15 264;
+    }
+
+    .dark {
+        --background: 0.08 0.02 264;
+        --foreground: 0.95 0.02 264;
+        --card: 0.12 0.02 264;
+        --card-foreground: 0.95 0.02 264;
+        --popover: 0.15 0.02 264;
+        --popover-foreground: 0.95 0.02 264;
+        --primary: 0.65 0.18 264;
+        --primary-foreground: 0.08 0.02 264;
+        --secondary: 0.18 0.02 264;
+        --secondary-foreground: 0.95 0.02 264;
+        --muted: 0.18 0.02 264;
+        --muted-foreground: 0.65 0.02 264;
+        --accent: 0.22 0.03 264;
+        --accent-foreground: 0.95 0.02 264;
+        --destructive: 0.75 0.22 15;
+        --destructive-foreground: 0.08 0.02 264;
+        --border: 0.22 0.02 264;
+        --input: 0.22 0.02 264;
+        --ring: 0.65 0.18 264;
+        --chart-1: 0.45 0.20 264;
+        --chart-2: 0.55 0.18 180;
+        --chart-3: 0.65 0.15 120;
+        --chart-4: 0.75 0.12 60;
+        --chart-5: 0.85 0.08 30;
+        --sidebar: 0.12 0.02 264;
+        --sidebar-foreground: 0.95 0.02 264;
+        --sidebar-primary: 0.65 0.18 264;
+        --sidebar-primary-foreground: 0.08 0.02 264;
+        --sidebar-accent: 0.18 0.02 264;
+        --sidebar-accent-foreground: 0.95 0.02 264;
+        --sidebar-border: 0.22 0.02 264;
+        --sidebar-ring: 0.65 0.18 264;
+    }
+
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+        font-feature-settings: "rlig" 1, "calt" 1;
+    }
+}
+
+/* Custom styles for image dithering app */
+@layer components {
+    .dithered-preview {
+        image-rendering: pixelated;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: crisp-edges;
+    }
+    
+    .upload-zone {
+        @apply border-2 border-dashed rounded-lg p-8 text-center transition-colors;
+        border-color: oklch(var(--muted-foreground) / 0.25);
+    }
+    
+    .upload-zone:hover {
+        border-color: oklch(var(--primary) / 0.5);
+        background-color: oklch(var(--primary) / 0.05);
+    }
+    
+    .processing-overlay {
+        @apply absolute inset-0 flex items-center justify-center;
+        background-color: oklch(var(--background) / 0.8);
+        backdrop-filter: blur(4px);
+    }
+}
+
+/* Ensure images can be saved on iOS */
+img[data-saveable="true"] {
+    -webkit-user-select: none;
+    -webkit-touch-callout: default;
+    user-select: none;
+}
